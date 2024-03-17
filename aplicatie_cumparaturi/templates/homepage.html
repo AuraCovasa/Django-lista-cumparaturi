@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Acasa{% endblock %}
+{% block content %}
+<h2>Lista produse</h2>
+ 
+<div class="mt-3">
+    <p>Produse necumparate</p>
+    <ul class="list-group">
+    {% for produs in lista_produse %}
+        {% if not produs.cumparat %}
+        <li class="list-group-item d-flex justify-content-between align-items-center text-dark">
+            {{ produs.nume }}
+            <div>
+                <a href="{% url 'cumpara' produs.id %}" class="btn btn-success btn-sm">Cumpara</a>
+                <a href="{% url 'sterge' produs.id %}" class="btn btn-danger btn-sm">Sterge</a>
+            </div>
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</div>
+ 
+<div class="mt-3">
+    <p>Produse cumparate</p>
+    <ul class="list-group">
+    {% for produs in lista_produse %}
+        {% if produs.cumparat %}
+        <li class="list-group-item d-flex justify-content-between align-items-center text-dark">
+            {{ produs.nume }}
+            <div>
+                <a href="{% url 'sterge' produs.id %}" class="btn btn-danger btn-sm">Sterge</a>
+            </div>
+        </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Adauga un produs nou:</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label for="nume_produs">Numele produsului:</label>
+    <input type="text" id="nume_produs" name="nume" required>
+    <button type="submit">Adauga</button>
+</form>
+<h2>{{ mesaj }}</h2>
+<h2><a href="{% url 'homepage' %}">Mergi la homepage</a></h2>
+</body>
+</html>
